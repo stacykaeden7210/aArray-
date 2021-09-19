@@ -1,0 +1,17 @@
+$aArray = GetTable("(Process -id " & @AutoItPID & ").StartInfo | select -ExpandProperty environmentvariables")
+_ArrayDisplay($aArray, ".StartInfo ExpandProperty environmentvariables From Process -id")
+
+$aArray = GetTable("Content .\Example.csv | select -First 5", ",")
+_ArrayDisplay($aArray, "List First 5 lines")
+
+$aArray = GetTable("Content .\Example.csv -Tail 5", ",")
+_ArrayDisplay($aArray, "List -Tail 5 Lines")
+
+$aArray = GetTable("import-csv '.\Example.csv'|Select-Object 'System Resolver', 'Server IP', 'Owner'")
+_ArrayDisplay($aArray, "Display Columns By Header Names")
+
+$aArray = GetTable("NetAdapter -physical | where status -eq 'up'")
+_ArrayDisplay($aArray, "Up and Running physical net NetAdapter Detail")
+
+$aArray = GetTable("NetIPAddress -AddressFamily IPv4 -AddressState Preferred")
+_ArrayDisplay($aArray, "IPv4 NetIP Detail")
